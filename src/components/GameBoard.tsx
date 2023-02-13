@@ -1,16 +1,6 @@
 import React, { useState } from "react";
-import { c4Rows } from "src/components/constants";
-
-const GameBoard: React.FC = (): JSX.Element => {
-    const initialBoard = {
-        rows: Array.from({ length: c4Rows }),
-    };
-    const [board, setBoard] = useState();
-    return (
-        <div>
-            <button className="button">New Game</button>
-        </div>
-    );
-};
-
-export default GameBoard;
+import { c4Columns, c4Rows } from "src/components/constants/index";
+import GameRow from "src/components/GameRow";
+import { Board } from "src/components/interfaces/Board";
+import { Row } from "src/components/interfaces/Row";
+import { Column } from "src/components/interfaces/Column";

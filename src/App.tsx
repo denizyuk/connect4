@@ -1,14 +1,14 @@
-import React from "react";
 import "./App.css";
-import Gameboard from "src/components/GameBoard";
+import GameBoard from "src/components/GameBoard";
+import React from "react";
 
-function App() {
+const App: React.FunctionComponent = (): JSX.Element => {
     return (
-        <div className="App">
-            <h1>Connect 4</h1>
-            <Gameboard />
+        <div>
+            <h1>Connect Four</h1>
+            <GameBoard />
         </div>
     );
-}
+};
 
 export default App;
