@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { c4Columns, c4Rows } from "src/components/constants/index";
-import GameRow from "src/components/GameRow";
+import { GameRow } from "src/components/GameRow";
 import { Board } from "src/components/interfaces/Board";
 import { Row } from "src/components/interfaces/Row";
 import { Column } from "src/components/interfaces/Column";
@@ -65,6 +65,42 @@ const GameBoard: React.FunctionComponent = (): JSX.Element => {
             checkDiagonalLeft(rowIndex, columnIndex)
         );
     };
+    const checkHorizontal = (
+        rowIndex: number,
+        columnIndex: number
+    ): boolean => {
+        let row: Row = board.rows[rowIndex];
+        let consecutiveColumns: number = 0;
+        for (let h: number = 0; h < c4Columns; h++) {
+            if (row.columns[h].player === currPlayer) {
+                consecutiveColumns++;
+                if (consecutiveColumns === 4) {
+                    return true;
+                }
+            } else {
+                consecutiveColumns = 0;
+            }
+        }
+        return false;
+    };
+    const checkVertical = (
+        rowIndex: number,
+        columnIndex: number
+    ): boolean => {
+        let row: Row = board.rows[rowIndex];
+        let consecutiveColumns: number = 0;
+        for (let v: number = 0; v < c4Rows; v++) {
+            if (board.rows[v].columns[columnIndex].player === currPlayer) {
+                consecutiveColumns++;
+                if (consecutiveColumns === 4) {
+                    return true;
+                }
+            } else {
+                consecutiveColumns = 0;
+            }
+        }
+        return false;
+        
 };
 
 export default GameBoard;
