@@ -64,43 +64,50 @@ const GameBoard: React.FunctionComponent = (): JSX.Element => {
             checkDiagonal(rowIndex, columnIndex)
         );
     };
+    // Horizantal works
     const checkHorizontal = (
         rowIndex: number,
         columnIndex: number
     ): boolean => {
         let row: Row = board.rows[rowIndex];
-        let consecutiveColumns: number = 0;
+        let consecutiveRows: number = 0;
         for (let h: number = 0; h < c4Columns; h++) {
             if (row.columns[h].player === currPlayer) {
-                consecutiveColumns++;
-                if (consecutiveColumns === 4) {
+                consecutiveRows++;
+                if (consecutiveRows === 4) {
                     return true;
                 }
             } else {
-                consecutiveColumns = 0;
+                consecutiveRows = 0;
+            }
+        }
+        // console.log(
+        //     `currentColumnIndex: ${columnIndex}, consecutiveColumns: ${consecutiveColumns}`
+        // );
+        return false;
+    };
+
+    // Vertical works
+    const checkVertical = (rowIndex: number, columnIndex: number): boolean => {
+        let row: Row = board.rows[rowIndex];
+        let consecutiveRows: number = 0;
+        for (let r: number = 0; r < c4Rows; r++) {
+            if (
+                board.rows[r].columns[columnIndex].player ===
+                row.columns[columnIndex].player
+            ) {
+                consecutiveRows++;
+                if (consecutiveRows >= 4) {
+                    return true;
+                }
+            } else {
+                consecutiveRows = 0;
             }
         }
         return false;
     };
-    const checkVertical = (rowIndex: number, columnIndex: number): boolean => {
-        let row: Row = board.rows[rowIndex];
-        let consecutiveRows: number = 0;
-        for (let v: number = 0; v < c4Rows; v++) {
-            if (
-                board.rows[v].columns[columnIndex].player ===
-                row.columns[columnIndex].player
-            ) {
-                consecutiveRows++;
-                if (consecutiveRows === 4) {
-                    return true;
-                } else {
-                    consecutiveRows = 0;
-                }
-            }
-            return false;
-        }
-    };
 
+    // Diagonal works
     const checkDiagonal = (rowIndex: number, columnIndex: number): boolean => {
         let consecutiveTiles: number = 0;
 
