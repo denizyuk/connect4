@@ -47,11 +47,11 @@ table {
 }
 
 .player1 {
-    background-color: red;
+    background-color: green;
     transition: background-color 0.25s;
 }
 
 .player2 {
-    background-color: yellow;
+    background-color: purple;
     transition: background-color 0.25s;
 }
