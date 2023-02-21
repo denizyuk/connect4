@@ -4,6 +4,9 @@
         "target": "es6",
         "jsx": "react",
         "allowSyntheticDefaultImports": true,
-        "baseUrl": "."
+        "baseUrl": ".",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "module": "es2020"
     }
 }
